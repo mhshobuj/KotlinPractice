@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.kotlinpracticedemo.Adapter.MovieAdapter
+import com.example.kotlinpracticedemo.Common.Constants
 import com.example.kotlinpracticedemo.ViewModel.MovieViewModel
 import com.example.kotlinpracticedemo.databinding.ActivityMainBinding
 
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         prepareRecyclerView()
         viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
 
-        viewModel.getPopularMovies("69d66957eebff9666ea46bd464773cf0")
+        viewModel.getPopularMovies(Constants.API_KEY)
         viewModel.observeMovieLiveData().observe(this, Observer { movieResponse ->
             movieAdapter.setMovieList(movieResponse.results, this)
         })
