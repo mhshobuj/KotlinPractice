@@ -1,6 +1,6 @@
 package com.example.kotlinpracticedemo.Model
 
-data class Movies(
+data class MovieListResponse(
     val page: Int,
     val results: List<Result>,
     val total_pages: Int,

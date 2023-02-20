@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MovieDetailsActivity">
+
+    <!-- Header Image -->
+    <ImageView
+        android:id="@+id/header_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="fitXY"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_launcher_background"/>
+
+    <!-- Movie Title -->
+    <TextView
+        android:id="@+id/movie_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Movie Title"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:layout_below="@id/header_image"/>
+
+    <!-- Movie Overview -->
+    <TextView
+        android:id="@+id/movie_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Movie Overview"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:padding="16dp"
+        android:layout_below="@id/movie_title"/>
+
+    <!-- Movie Details Table -->
+    <TableLayout
+        android:id="@+id/movie_details_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:padding="16dp"
+        android:layout_below="@id/movie_overview">
+
+        <!-- Budget -->
+        <TableRow>
+            <TextView
+                android:text="Budget"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/movie_budget"
+                android:text="2500000"/>
+        </TableRow>
+
+        <!-- Release Date -->
+        <TableRow>
+            <TextView
+                android:text="Release Date"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/movie_release_date"
+                android:text="January 1, 2023"/>
+        </TableRow>
+
+        <!-- Runtime -->
+        <TableRow>
+            <TextView
+                android:text="Runtime"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/movie_runtime"
+                android:text="120 minutes"/>
+        </TableRow>
+
+        <!-- Genre -->
+        <TableRow>
+            <TextView
+                android:text="Genre"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/movie_genre"
+                android:text="Action, Adventure, Comedy"/>
+        </TableRow>
+
+        <!-- Rating -->
+        <TableRow>
+            <TextView
+                android:text="Rating"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/movie_rating"
+                android:text="7.5/10"/>
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

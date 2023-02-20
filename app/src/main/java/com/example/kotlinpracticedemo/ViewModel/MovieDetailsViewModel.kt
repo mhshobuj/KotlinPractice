@@ -4,18 +4,19 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kotlinpracticedemo.Model.MovieDetailsResponse
 import com.example.kotlinpracticedemo.Model.MovieListResponse
 import com.example.kotlinpracticedemo.Network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieViewModel : ViewModel() {
-    private var movieLiveData = MutableLiveData<MovieListResponse>()
-    fun getPopularMovies(api_key: String) {
-        RetrofitClient.api.getPopularMovies(api_key).enqueue(object  :
-            Callback<MovieListResponse> {
-            override fun onResponse(call: Call<MovieListResponse>, response: Response<MovieListResponse>) {
+class MovieDetailsViewModel : ViewModel() {
+    private var movieLiveData = MutableLiveData<MovieDetailsResponse>()
+    fun getMovieDetails(movie_id: Int, api_key: String) {
+        RetrofitClient.api.getMovieDetails(movie_id, api_key).enqueue(object:
+            Callback<MovieDetailsResponse> {
+            override fun onResponse(call: Call<MovieDetailsResponse>, response: Response<MovieDetailsResponse>) {
                 if (response.body()!=null){
                     movieLiveData.value = response.body()
                 }
@@ -23,12 +24,12 @@ class MovieViewModel : ViewModel() {
                     return
                 }
             }
-            override fun onFailure(call: Call<MovieListResponse>, t: Throwable) {
+            override fun onFailure(call: Call<MovieDetailsResponse>, t: Throwable) {
                 Log.d("TAG",t.message.toString())
             }
         })
     }
-    fun observeMovieLiveData() : LiveData<MovieListResponse> {
+    fun observeMovieLiveData() : LiveData<MovieDetailsResponse> {
         return movieLiveData
     }
 }
